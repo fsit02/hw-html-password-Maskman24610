@@ -2,40 +2,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewpoint" content="width=device-width initial-scale=1">
+<link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <title>Insert title here</title>
 <script src="js/jquery.js"></script>
 <script src="js/seedrandom.js"></script>
 <style>
+
 #randomTable {
     font-family: monospace;
     font-size: 2.0em;
+    margin:5% 35% 5% 35%  ;
+    
 }
 </style>
 </head>
 <body>
+<div class="container">
+	<div class="row">
+<div class=" col-md-4 col-sm-12 col-xs-12">請輸入亂數表的編號：<input type="text" id="txtSeed" value="1234" />
+&nbsp;<input type="button" id="btnGo" value="產生亂數表" /></div>
 
-請輸入亂數表的編號：<input type="text" id="txtSeed" value="1234" />
-&nbsp;<input type="button" id="btnGo" value="產生亂數表" />
+<div class="col-md-4  col-sm-12 col-xs-12">請輸入想要的Row數:<input type="text" id="txtRow" value="">
+&nbsp;<input type="button" id="btnRow" value="設定Row數"></div>
 
-<div id="randomTable">
+<div class="col-md-4 col-sm-12 col-xs-12">請輸入想要的Colume數:<input type="text"  id="txtCol" value="">
+&nbsp;<input type="button" id="btnCol" value="設定Colume數"></div>
+</div>
+</div>
+
+<div    id="randomTable"  >
 </div>
 
 <script>
+var rowValue=0;
+$("#btnRow").click(function (){
+	rowValue=document.getElementById("txtRow").value;
+	return rowValue;
+});//按下設定Row按鈕後設定rowVlaue的值
+
+var colValue=0;
+$("#btnCol").click(function(){
+   colValue=document.getElementById("txtCol").value;
+   return colValue;
+});
 
 $("#btnGo").click(function () {
     var result = "";
 	// 純數字:
-	var sPool = "0123456789";
+	//var sPool = "0123456789";
     // 數字+小寫字母: (去除 l, o)
-    // var sPool = "abcdefghijkmnpqrstuvwxyz0123456789";
+    //var sPool = "abcdefghijkmnpqrstuvwxyz0123456789";
     // 數字+大小寫字母: (去除 I, O, l, o)
-    // var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+     var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
 
     Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
 	var iRandom = 0; var ch = "?";
-	for (iRow = 1; iRow <= 10; iRow++) {
+	for (iRow = 1; iRow <= rowValue; iRow++) {
 		var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
-		for (iCol = 1; iCol <= 10; iCol++) {
+		for (iCol = 1; iCol <=colValue; iCol++) {
 			iRandom = Math.floor(Math.random() * sPool.length);
 			ch = sPool.substr(iRandom, 1);
 			sLine += ch;
