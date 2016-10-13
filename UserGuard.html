@@ -11,9 +11,15 @@
 
 <body>
     <style>
+           a:link{
+               color:blue;
+               text-decoration:none;
+           }
+           a:hover{color:green;}
+           
            b{color:red;}
-            h1{color:#600060;}
-            img{background-color:gray;}
+           h1{color:#600060;}
+           img.random{background-color:gray;}
     </style>
     <div class="container">
         <div class="row">
@@ -31,11 +37,12 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h1>$("#btnGo").click(function (){/more code});的功用</h1>
                 <div class="col-md-6">
-                <h3>利用js資料夾中的<a href="js/seedrandom.js" target="_blank">seedrandom.js</a>依照所輸入的數字及英文字母產生<b>亂數種子</b>，
+                <h3>一開始先利用 <b name="fun">$("input[name=mode]:checked).val()</b>取得按鈕的value 所代表的字串，並將它轉成整數，利用switch決定<b>亂數種子</b>的形式。
+                利用js資料夾中的<a href="js/seedrandom.js" target="_blank">seedrandom.js</a>依照所輸入的數字及英文字母產生<b>亂數種子</b>，
                 該種子會決定你所亂數出的結果(一個種子對應固定亂數表),如果沒有更改輸入的數字及英文字母，亂數的結果會有一定的規律。</h3></div>
                 <div class="col-md-6">
                     <a href="https://pratice-maskman24610.c9users.io/hw-html-password-Maskman24610/index.html" target="_blank">
-                    <img src="random.png" title="Row=10,Col=10,seedrandom=1234 的情形">
+                    <img src="random.png" title="Row=10,Col=10,seedrandom=1234 的情形" class="random"> 
                     </a>
                 </div>
             </div>
